@@ -8,6 +8,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const express = require('express');
+const cors = require('cors'); // <--- 1. ADD THIS
+
+
+// ... rest of your code ...
+
 // 1. MongoDB Connection
 // Make sure MongoDB is running locally or provide your Atlas URI
 
