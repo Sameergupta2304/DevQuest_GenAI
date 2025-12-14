@@ -13,7 +13,7 @@ app.use(express.json());
 
 // ✅ Corrected: Removed the options object AND the semicolon
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log('✅ Connected to MongoDB'))
+  .then(() => console.log('✅Connected to MongoDB'))
   .catch(err => console.error('❌ MongoDB Connection Error:', err));
 
 
