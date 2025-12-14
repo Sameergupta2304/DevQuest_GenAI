@@ -23,11 +23,12 @@ import {
 // --- CONFIGURATION ---
 // ✅ LIVE MODE ENABLED
 // Set to 'false' to connect to your real backend.
-// Note: This might cause CORS errors in the preview window, but will work when deployed.
 const USE_MOCK_API = false; 
 
 // ✅ BACKEND CONNECTION
-const API_BASE_URL = 'https://dev-quest-gen-bl5jyv7l-sameergupta2304s-projects.vercel.app';
+// Updated to your Main Production Domain.
+// Ensure you have enabled CORS in your backend code (server.js) for this to work!
+const API_BASE_URL = 'https://dev-quest-gen-ai.vercel.app';
 
 // 3. API KEY (Paste your key inside the quotes below)
 const API_KEY = 'AIzaSyBEaMypVxt3Dhc6X5a0FsYIl-Ea6ozmngM'; 
