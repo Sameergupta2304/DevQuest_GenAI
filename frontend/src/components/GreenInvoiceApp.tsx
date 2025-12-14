@@ -27,7 +27,7 @@ const USE_MOCK_API = false;
 // 2. BACKEND CONNECTION DETAILS
 // If running locally, keep as 'http://localhost:3000'
 // If deployed, change to your live server URL (e.g., 'https://my-green-api.onrender.com')
-const API_BASE_URL = 'https://dev-quest-gen-ai.vercel.app/';
+const API_BASE_URL = 'https://dev-quest-gen-ai-git-main-sameergupta2304s-projects.vercel.app/';
 
 // 3. API KEY (Paste your key inside the quotes below)
 // This key will be sent in the headers (x-api-key) to your backend
