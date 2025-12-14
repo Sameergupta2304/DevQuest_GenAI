@@ -153,7 +153,7 @@ export default function GreenInvoiceApp() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-slate-50 font-sans text-slate-900">
+    <div className="min-h-screen w-full bg-slate-50 font-sans text-slate-900 flex flex-col">
       {/* --- FORCE FULL SCREEN OVERRIDE --- 
           This style block forcefully resets default Vite/CSS layout constraints 
           that might be limiting the width in index.css 
@@ -194,7 +194,7 @@ export default function GreenInvoiceApp() {
         </div>
       </header>
 
-      <main className="w-full px-6 py-8">
+      <main className="w-full px-6 py-8 flex-grow">
         
         {/* VIEW: UPLOAD */}
         {activeTab === 'upload' && (
@@ -412,6 +412,13 @@ export default function GreenInvoiceApp() {
           </div>
         )}
       </main>
+      
+      {/* FOOTER FOR VERSION CHECKING */}
+      <footer className="w-full bg-slate-100 py-4 text-center border-t border-slate-200">
+        <p className="text-xs text-slate-400 font-mono">
+           App Version: <span className="text-emerald-600 font-bold">v2.0 (Live)</span> | Backend: <span className="text-slate-600">{API_BASE_URL.replace('https://', '')}</span>
+        </p>
+      </footer>
     </div>
   );
 }
