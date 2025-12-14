@@ -21,16 +21,15 @@ import {
 } from 'recharts';
 
 // --- CONFIGURATION ---
-// 1. Set to 'false' to connect to a real backend, 'true' for Demo Mode
+// ✅ LIVE MODE ENABLED
+// Set to 'false' to connect to your real backend.
+// Note: This might cause CORS errors in the preview window, but will work when deployed.
 const USE_MOCK_API = false; 
 
-// 2. BACKEND CONNECTION DETAILS
-// If running locally, keep as 'http://localhost:3000'
-// If deployed, change to your live server URL (e.g., 'https://my-green-api.onrender.com')
-const API_BASE_URL = 'https://dev-quest-gen-ai-git-main-sameergupta2304s-projects.vercel.app/';
+// ✅ BACKEND CONNECTION
+const API_BASE_URL = 'https://dev-quest-gen-bl5jyv7l-sameergupta2304s-projects.vercel.app';
 
 // 3. API KEY (Paste your key inside the quotes below)
-// This key will be sent in the headers (x-api-key) to your backend
 const API_KEY = 'AIzaSyBEaMypVxt3Dhc6X5a0FsYIl-Ea6ozmngM'; 
 
 export default function GreenInvoiceApp() {
@@ -102,7 +101,9 @@ export default function GreenInvoiceApp() {
 
       // 2. Call the API
       // We now use the API_BASE_URL and API_KEY constants defined at the top
-      const response = await fetch(`${API_BASE_URL}/api/analyze-invoice`, {
+      // NOTE: We remove any trailing slash from base url to avoid double slashes //
+      const baseUrl = API_BASE_URL.replace(/\/$/, ""); 
+      const response = await fetch(`${baseUrl}/api/analyze-invoice`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -112,7 +113,7 @@ export default function GreenInvoiceApp() {
       });
 
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error(`Server returned ${response.status}: ${response.statusText}`);
       }
 
       const result = await response.json();
@@ -133,9 +134,19 @@ export default function GreenInvoiceApp() {
       setIsProcessing(false);
       setActiveTab('dashboard');
 
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error connecting to backend:", error);
-      alert(`Error: Could not connect to backend at ${API_BASE_URL}. \n\nCheck your API Key and ensure the server is running!`);
+      
+      let errorMessage = `Error: Could not connect to backend at ${API_BASE_URL}.\n\nDetails: ${error.message}`;
+      
+      // Add specific hint for "Failed to fetch" which is usually CORS
+      if (error.message && error.message.includes("Failed to fetch")) {
+        errorMessage += "\n\n💡 HINT: This is likely a CORS error. The browser blocked the request because your backend does not allow requests from this preview domain. Try testing on localhost or enable CORS on your backend.";
+      } else {
+        errorMessage += "\n\nCheck your API Key and ensure the BACKEND server is running!";
+      }
+
+      alert(errorMessage);
       setIsProcessing(false);
     }
   };
