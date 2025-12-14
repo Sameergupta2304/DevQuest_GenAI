@@ -26,9 +26,9 @@ import {
 const USE_MOCK_API = false; 
 
 // ✅ BACKEND CONNECTION
-// Updated to your Main Production Domain.
-// Ensure you have enabled CORS in your backend code (server.js) for this to work!
-const API_BASE_URL = 'https://dev-quest-gen-ai.vercel.app';
+// We are using the specific deployment URL for your Backend.
+// This prevents the "Frontend talking to Frontend" loop.
+const API_BASE_URL = 'https://dev-quest-gen-bl5jyv7l-sameergupta2304s-projects.vercel.app';
 
 // 3. API KEY (Paste your key inside the quotes below)
 const API_KEY = 'AIzaSyBEaMypVxt3Dhc6X5a0FsYIl-Ea6ozmngM'; 
